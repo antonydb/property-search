@@ -1,1 +1,20 @@
-{{!-- Populate with output from route controller, use correct markup --}}
+{{> searchForm postcode=postcode}}
+
+<p>{{data.count}} results found</p>
+
+{{#each data.listings}}
+    <div>
+        <div>
+            <img src="{{image}}" alt="property image" />
+            <h2>{{title}}</h2>
+            <p>{{price}}</p>
+            <p>{{description}}</p>
+        </div>
+        <div>
+            <img src="{{agent.logo}}" alt="{{agent.name}}">
+            <p>{{agent.name}}</p>
+            <p>{{agent.address}}</p>
+            <p>T: {{agent.phone}}</p>
+        </div>
+    </div>
+{{/each}}
