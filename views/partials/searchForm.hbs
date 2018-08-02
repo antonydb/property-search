@@ -1,13 +1,13 @@
 <form action="/search" method="get">
-    <label for="postcode">
-        {{#if postcode}}
+    <label for="location">
+        {{#if location}}
             Enter another location and search again
         {{else}}
             Search for houses and flats for sale across the UK
         {{/if}}
     </label>
     <div>
-        <input id="postcode" type="text" name="postcode" value={{postcode}}>
+        <input id="location" type="text" name="location" value={{location}}>
         <button type="submit">Search</button>
     </div>
 </form>

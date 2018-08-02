@@ -1,8 +1,8 @@
-{{> searchForm postcode=postcode}}
+{{> searchForm location=location}}
 
-<p>{{data.count}} results found</p>
+<p>{{results.count}} results found</p>
 
-{{#each data.listings}}
+{{#each results.listings}}
     <div>
         <div>
             <img src="{{image}}" alt="property image" />

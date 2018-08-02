@@ -1,22 +1,35 @@
 const mockResponse = require('../mock/mock-response');
 const router = require('express').Router();
 
-const postcodeToMatch = mockResponse.area;
-const isMatchingPostcode = (postcode = '') => postcode.trim().toUpperCase() === postcodeToMatch;
+const locationToMatch = mockResponse.area;
+const isLocationValid = location => location.trim().toUpperCase() === locationToMatch;
 
 router.get('/', (req, res) => {
-    const postcode = req.query.postcode || '';
+    const { location } = req.query;
 
-    if (isMatchingPostcode(postcode)) {
+    if (location !== undefined) {
+        res.redirect(`/search/${location}`)
+    } else {
+        res.render('search', {
+            location: '',
+        })
+    }
+});
+
+router.get('/:location', (req, res, next) => {
+    const location = req.params.location;
+
+    if (isLocationValid(location)) {
         res.render('results', {
-            postcode,
+            location,
             results: mockResponse,
         });
     } else {
         res.render('search', {
-            postcode,
+            location,
+            noResults: true,
         });
     }
-});
+})
 
 module.exports = router;
