@@ -1,20 +1,24 @@
-{{> searchForm location=location}}
-
-<p>{{results.count}} results found</p>
-
-{{#each results.listings}}
-    <div>
-        <div>
+{{> searchForm}}
+<p class="listings__count text-secondary">{{results.count}} results found</p>
+<ul>
+    {{#each results.listings}}
+        <li class="listing">
+            <div class="listing__image">
             <img src="{{image}}" alt="property image" />
-            <h2>{{title}}</h2>
-            <p>{{price}}</p>
-            <p>{{description}}</p>
-        </div>
-        <div>
-            <img src="{{agent.logo}}" alt="{{agent.name}}">
-            <p>{{agent.name}}</p>
-            <p>{{agent.address}}</p>
-            <p>T: {{agent.phone}}</p>
-        </div>
-    </div>
-{{/each}}
+            </div>
+            <div class="listing__info" >
+                <h3 class="text-big">{{title}}</h3>
+                <p class="text-huge text-primary">{{price}}</p>
+                <p class="text-secondary">{{description}}</p>
+            </div>
+            <div class="listing__agent">
+              <div class="listing__agent-details text-secondary">
+                <img class="listing__logo" src="{{agent.logo}}" alt="{{agent.name}}">
+                <h4>{{agent.name}}</h4>
+                <p>{{agent.address}}</p>
+                <p>T: {{agent.phone}}</p>
+              </div>
+            </div>
+        </li>
+    {{/each}}
+</ul>

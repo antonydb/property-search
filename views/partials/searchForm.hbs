@@ -1,13 +1,22 @@
-<form action="/search" method="get">
-    <label for="location">
-        {{#if location}}
-            Enter another location and search again
+<h2 class="text-huge">
+    {{#if noResults}}
+        No results found
+    {{else}}
+        Search for houses and flats for sale across the UK</h2>
+    {{/if}}
+</h2>
+
+<form id="search" action="/search" method="get">
+    <label class="search-form__label" for="location">
+        {{#if noResults}}
+            <span class="text-secondary">Enter another location and search again</span>
         {{else}}
-            Search for houses and flats for sale across the UK
+            <span class="sr-only">Enter search location</span>
         {{/if}}
     </label>
-    <div>
-        <input id="location" type="text" name="location" value={{location}}>
+    <div class="search-form__fields">
+        <input id="location" class="search-form__input" type="text" name="location" value={{location}}>
         <button type="submit">Search</button>
     </div>
+    <p id="search-error" class="error"></p>
 </form>
